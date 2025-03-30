@@ -1,0 +1,14 @@
+---
+name: userdict
+version: "2016"
+sort: by_weight
+use_preset_vocabulary: false
+...
+
+VC	vc	10
+jquery	j que r y	30
+Python	py th on	10
+Python	py	10
+java	jav a	10
+javascript	jav a	10
+linux	linu x	20

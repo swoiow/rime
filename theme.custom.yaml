@@ -1,0 +1,95 @@
+style:
+  label_format: "%s."
+  inline_preedit: true
+
+  font_point: 14
+  label_font_point: 8
+  comment_font_point: 8
+  horizontal: true
+
+  font_face: 更纱黑体 UI SC
+  label_font_face: 更纱黑体 UI SC
+
+  antialias_mode: cleartype
+  display_tray_icon: true
+
+  layout:
+    align_type: top
+    max_width: 1200
+    min_width: 10
+    margin_x: 15
+    margin_y: 6
+    hilite_spacing: 6
+    hilite_padding_y: 6
+    hilite_padding_x: 15
+    shadow_radius: 8
+    corner_radius: 8
+    round_corner: 8
+    shadow_offset_x: 5
+    shadow_offset_y: 5
+
+#  font_point: 14
+#  label_font_point: 6
+#  comment_font_point: 6
+#  corner_radius: 10
+#
+#  font_face: 更纱黑体 UI SC
+#  label_font_face: 更纱黑体 UI SC
+#
+#  layout:
+#    align_type: center
+#    max_width: 0           # 设为 0 代表不限制最大宽度
+#    min_width: 160
+#    min_height: 0
+#    max_height: 0          # 设为 0 代表不限制最大高度
+#    border_width: 3
+#    margin_x: 12
+#    margin_y: 12
+#    spacing: 10
+#    candidate_spacing: 5
+#    hilite_spacing: 4
+#    hilite_padding: 2
+#    round_corner: 6        # 等价于 hilited_corner_radius
+#    corner_radius: 4
+#    shadow_radius: 0
+#    shadow_offset_x: 4
+#    shadow_offset_y: 4
+#    linespacing: 0         # 百分比，设为 0 表示不调整行距
+#    baseline: 0            # 百分比，设为 0 表示默认基线对齐
+
+preset_color_schemes:
+  good_light:
+    author: _ <mail.me@pylab.me>
+    name: good_light
+    text_color: 0x4F4737
+    back_color: 0xF5F5F5
+    border_color: 0xF5F5F5
+    candidate_text_color: 0x4F4737
+    comment_text_color: 0x616161
+    hilited_candidate_back_color: 0xDCD8CF
+    hilited_candidate_text_color: 0x424242
+    hilited_text_color: 0x616161
+
+  crayon_light:
+    author: ChatGPT <chatgpt@openai.com>
+    name: crayon_light
+    text_color: 0x3C3C3C              # 主文字：深灰，柔和不刺眼
+    back_color: 0xFFF8E7              # 背景：蜡笔米黄色
+    border_color: 0xF2E6D8            # 边框：柔和棕橘
+    candidate_text_color: 0x4C4C4C    # 候选词：较深灰色
+    comment_text_color: 0x9C877C      # 注释：温和棕色
+    hilited_candidate_back_color: 0xF9D5E5  # 高亮候选背景：粉蜡红
+    hilited_candidate_text_color: 0x2E2E2E  # 高亮候选文字：深灰
+    hilited_text_color: 0x5E5E5E      # 高亮注释文字：加深灰色
+
+  crayon_light2:
+    author: ChatGPT <chatgpt@openai.com>
+    name: crayon_light2
+    text_color: 0x5C5045            # 温柔灰褐（正文）
+    back_color: 0xFAF8F5            # 柔和米白（背景）
+    border_color: 0xE9E5DC          # 雾灰米色（边框）
+    candidate_text_color: 0x4E453E  # 略深褐（候选词）
+    comment_text_color: 0x9B8E84    # 淡雾棕（注释）
+    hilited_candidate_back_color: 0xF2E4DA  # 淡淡樱花粉
+    hilited_candidate_text_color: 0x3A342D  # 近黑偏褐（选中项）
+    hilited_text_color: 0x7A6F64    # 加深雾褐（附注高亮）
