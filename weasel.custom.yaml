@@ -15,3 +15,7 @@ patch:
 
   preset_color_schemes/+:
     __include: "theme.custom:/preset_color_schemes"
+
+  translator/+:
+    packs:
+      - thuocl_all

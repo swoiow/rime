@@ -26,12 +26,17 @@ switches:
     states: [ 漢字, 汉字 ]
   - name: ascii_punct
     states: [ 。，, ．， ]
+  - name: enable_fuzzy
+    reset: 0
+    states: [ 关闭, 开启 ]
 
 engine:
   filters:
+    - lua_filter@*history*history_filter
     - simplifier
     - uniquifier
   processors:
+    - lua_processor@*history*history_processor
     - ascii_composer
     - recognizer
     - key_binder
@@ -41,13 +46,14 @@ engine:
     - navigator
     - express_editor
   segmentors:
+    #    - lua_segmentor@fuzzy_segmentor
     - ascii_segmentor
     - matcher
     - abc_segmentor
     - punct_segmentor
     - fallback_segmentor
   translators:
-    - lua_translator@*date_translator
+    - lua_translator@*translators*date_time_translator
     - lua_translator@*autocomplete
     - punct_translator
     - script_translator
@@ -79,21 +85,23 @@ speller:
     - derive/([iu])a(o|ng?)$/a$1$2/
 
 translator:
-  dictionary: pinyin_plus
   enable_user_dict: true
+  dictionary: pinyin_plus
   preedit_format:
     - xform/([nl])v/$1ü/
     - xform/([nl])ue/$1üe/
     - xform/([jqxy])v/$1u/
+  filters:
+    - translator@english_translator
 
-reverse_lookup:
-  dictionary: stroke
-  enable_completion: true
-  prefix: "`"
-  suffix: "'"
-  tips: 〔笔画〕
-  preedit_format:
-    - xlit/hspnz/一丨丿丶乙/
+#reverse_lookup:
+#  dictionary: stroke
+#  enable_completion: true
+#  prefix: "`"
+#  suffix: "'"
+#  tips: 〔笔画〕
+#  preedit_format:
+#    - xlit/hspnz/一丨丿丶乙/
 
 punctuator:
   import_preset: symbols
