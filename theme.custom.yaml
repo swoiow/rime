@@ -3,30 +3,33 @@ style:
   inline_preedit: true
 
   font_point: 14
-  label_font_point: 8
-  comment_font_point: 8
+  label_font_point: 9                # 标签字体稍增大一点点，增强辨识度
+  comment_font_point: 9              # 注释字体也稍增大，更清晰易读
   horizontal: true
 
   font_face: 更纱黑体 UI SC
   label_font_face: 更纱黑体 UI SC
 
-  antialias_mode: cleartype
-  display_tray_icon: true
+  antialias_mode: cleartype          # 字体渲染清晰模式
+  display_tray_icon: true            # 托盘图标显示
 
   layout:
     align_type: top
     max_width: 1200
     min_width: 10
-    margin_x: 15
-    margin_y: 6
-    hilite_spacing: 6
-    hilite_padding_y: 6
-    hilite_padding_x: 15
-    shadow_radius: 8
-    corner_radius: 8
-    round_corner: 8
-    shadow_offset_x: 5
-    shadow_offset_y: 5
+    margin_x: 15                     # 左右边距稍微加宽，让候选词更宽敞
+    margin_y: 6                     # 上下边距略增加，空间感更佳
+
+    hilite_spacing: 8                # 高亮候选词之间稍加大间隔
+    hilite_padding_y: 8              # 高亮区域上下内边距加大，视觉舒适
+    hilite_padding_x: 15             # 高亮区域左右内边距也加宽，突出选中项更清晰
+
+    shadow_radius: 10                # 阴影范围稍增加，柔和且立体感更强
+    shadow_offset_x: 6               # 阴影水平偏移适度调整
+    shadow_offset_y: 6               # 阴影垂直偏移适度调整
+
+    corner_radius: 10                # 候选框圆角统一加大，更温润现代
+    round_corner: 10                 # 高亮项圆角统一
 
 #  font_point: 14
 #  label_font_point: 6
@@ -59,7 +62,7 @@ style:
 
 preset_color_schemes:
   good_light:
-    author: _ <mail.me@pylab.me>
+    author: _ <git@pylab.me>
     name: good_light
     text_color: 0x4F4737
     back_color: 0xF5F5F5
@@ -93,3 +96,43 @@ preset_color_schemes:
     hilited_candidate_back_color: 0xF2E4DA  # 淡淡樱花粉
     hilited_candidate_text_color: 0x3A342D  # 近黑偏褐（选中项）
     hilited_text_color: 0x7A6F64    # 加深雾褐（附注高亮）
+
+  soft_milktea:
+    author: ChatGPT <chatgpt@openai.com>
+    name: soft_milktea
+    text_color: 0x60554A                  # 奶茶棕灰
+    back_color: 0xFDF8F0                  # 奶油米白
+    border_color: 0xEFE5DA                # 淡奶茶边框
+    candidate_text_color: 0x55493E        # 深奶茶色
+    comment_text_color: 0xA39588          # 淡焦糖色
+    hilited_candidate_back_color: 0xE4D3C4 # 浅咖啡拿铁色
+    hilited_candidate_text_color: 0x352E28 # 深浓咖啡色
+    hilited_text_color: 0x786B5E          # 焦糖拿铁色
+
+  minimalist_grayblue:
+    author: ChatGPT <chatgpt@openai.com>
+    name: minimalist_grayblue
+    text_color: 0x404852                  # 深灰蓝（正文）
+    back_color: 0xF4F7FA                  # 极浅灰蓝（背景）
+    border_color: 0xE0E7ED                # 柔和灰蓝（边框）
+    candidate_text_color: 0x36414C        # 深沉灰蓝
+    comment_text_color: 0x8895A2          # 雾灰蓝
+    hilited_candidate_back_color: 0xCBD9E5 # 清新淡蓝
+    hilited_candidate_text_color: 0x29333D # 深墨蓝
+    hilited_text_color: 0x61707D          # 深灰蓝色注释
+
+  solar_zen_dark:
+    author: ChatGPT <chatgpt@openai.com>
+    name: solar_zen_dark
+    text_color: 0xE0E8EA                   # 主文字：柔和亮青灰
+    back_color: 0x665500                   # 候选框整体背景：深海青蓝色（之前你喜欢的青色）
+    border_color: 0x03414E                 # 边框：稍深一点的青蓝，界限清晰
+    candidate_text_color: 0xD4E2E6         # 候选文字：淡青灰色，更易读
+    comment_text_color: 0x9BB1B7           # 注释文字：柔和灰青，稍暗淡一些
+    hilited_candidate_back_color: 0xD8DEE2 # 高亮背景：浅灰蓝色，低调鲜明
+    hilited_candidate_text_color: 0x103642 # 高亮候选文字：深墨青色，极高对比清晰
+    hilited_text_color: 0x667F88           # 高亮注释文字：灰蓝色，更柔和协调
+    # 以下新增的颜色专门调整了标签颜色，增强可视性
+    label_color: 0xAAC7CC                  # 标签数字颜色：中浅青灰色，更容易辨识
+    hilited_label_color: 0x03414E          # 高亮候选项的标签颜色：深青色，对比更明显
+
