@@ -18,4 +18,5 @@ patch:
 
   translator/+:
     packs:
+      - xin_hua_zi_dian
       - thuocl_all
