@@ -26,9 +26,6 @@ switches:
     states: [ 漢字, 汉字 ]
   - name: ascii_punct
     states: [ 。，, ．， ]
-  - name: enable_fuzzy
-    reset: 0
-    states: [ 关闭, 开启 ]
 
 engine:
   filters:
@@ -46,7 +43,6 @@ engine:
     - navigator
     - express_editor
   segmentors:
-    #    - lua_segmentor@fuzzy_segmentor
     - ascii_segmentor
     - matcher
     - abc_segmentor
@@ -85,14 +81,12 @@ speller:
     - derive/([iu])a(o|ng?)$/a$1$2/
 
 translator:
-  enable_user_dict: true
   dictionary: pinyin_plus
+  enable_user_dict: true
   preedit_format:
     - xform/([nl])v/$1ü/
     - xform/([nl])ue/$1üe/
     - xform/([jqxy])v/$1u/
-  filters:
-    - translator@english_translator
 
 #reverse_lookup:
 #  dictionary: stroke
