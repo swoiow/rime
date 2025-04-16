@@ -1,0 +1,66 @@
+name: CI - Rime Extension Pack
+
+on:
+  workflow_dispatch:
+  push:
+
+jobs:
+  build:
+    runs-on: macos-latest
+
+    steps:
+    - name: Checkout source
+      uses: actions/checkout@v4
+
+    - name: Setup Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: "3.12"
+
+    - name: Install dependencies
+      run: pip install requests pypinyin
+
+    - name: Build Rime dictionary pack
+      run: |
+        mkdir -p dist
+        python .github/packs/build_xhzd.py
+        python .github/packs/build_thuocl.py
+        ls dist
+
+    - name: Download rime_deployer
+      run: curl -L -o rime.tar.bz2 https://github.com/rime/librime/releases/download/1.13.1/rime-1c23358-macOS-universal.tar.bz2
+
+    - name: Extract rime_deployer
+      run: |
+        mkdir -p rime_bin
+        tar -xjf rime.tar.bz2 -C rime_bin
+        ls rime_bin/dist/bin/
+
+    - name: Compile with rime_deployer
+      run: |
+        export DYLD_LIBRARY_PATH=$GITHUB_WORKSPACE/rime_bin/dist/lib
+        export PATH=$GITHUB_WORKSPACE/rime_bin/dist/bin:$PATH
+        cd dist
+        rime_deployer --compile luna_pinyin_packs.schema.yaml
+        rm build/luna_pinyin_packs.*
+
+    - name: Upload as build artifact
+      uses: actions/upload-artifact@v4
+      with:
+        name: rime-dict-pack
+        path: dist/
+        retention-days: 7
+        compression-level: 9
+
+    - name: Release latest package
+      uses: softprops/action-gh-release@v2
+      with:
+        token: ${{ secrets.CUSTOM_GITHUB_TOKEN }}
+        tag_name: latest
+        name: "Rime Dictionary Extension Pack"
+        prerelease: false
+        draft: false
+        make_latest: true
+        files: |
+          dist/*.yaml
+          dist/build/*.bin
