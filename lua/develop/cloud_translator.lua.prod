@@ -1,0 +1,29 @@
+local json = require("json")
+local http = require("simplehttp")
+http.TIMEOUT = 0.5
+
+local function make_url(input)
+   return 'http://127.0.0.1:8000/predict?text='..input
+end
+
+local function translator(input, seg)
+   local input_char = input
+
+   local url = make_url(input_char)
+   local reply = http.request(url)
+   local success, j = pcall(json.decode, reply)
+
+   if success and j and j.status == 200 and j.result then
+      for _, item in ipairs(j.result) do
+         local token = item.token
+            log.info("cloud_translator called with translator: ", token)
+         if token then
+            yield(Candidate("predict", 0, 0, token, "〔预测〕"))
+         end
+      end
+   else
+      log.error("Invalid JSON structure or decode failed")
+   end
+end
+
+return translator  -- ✅ 必须是函数本身

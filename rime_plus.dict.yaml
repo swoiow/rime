@@ -1,0 +1,12 @@
+name: rime_plus
+version: "2025.04.01"
+sort: by_weight
+use_preset_vocabulary: true
+import_tables:
+#  - pinyin_plus
+  - luna_pinyin
+#  - pinyin_plus\userdict
+  - pinyin_plus\qqpy_default
+  - pinyin_plus\qqpy_usually
+  - pinyin_plus\sougou_chengyu
+  - pinyin_plus\sougou_netword

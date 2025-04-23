@@ -13,7 +13,8 @@ patch:
   menu/page_size: 6  # 每页候选词数量
 
   schema_list:
-    - { schema: pinyin_plus }
+    - { schema: super_input }
+#    - { schema: pinyin_dev }
 
   ascii_composer:
     good_old_caps_lock: true

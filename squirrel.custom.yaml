@@ -13,9 +13,9 @@ patch:
   app_options/com.jetbrains.pycharm:
     ascii_mode: true
 
+  preset_color_schemes/+:
+    __include: "theme.custom:/preset_color_schemes"
+
   style:
     color_scheme: crayon_light2
     __include: "theme.custom:/style"
-
-  preset_color_schemes/+:
-    __include: "theme.custom:/preset_color_schemes"

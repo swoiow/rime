@@ -6,15 +6,15 @@ customization:
   rime_version: 1.11.2
 
 patch:
-  "app_options/com.jetbrains.pycharm":
+  "app_options/pycharm.exe":
     ascii_mode: true
-
-  style:
-    color_scheme: crayon_light2
-    __include: "theme.custom:/style"
 
   preset_color_schemes/+:
     __include: "theme.custom:/preset_color_schemes"
+
+  style:
+    color_scheme: solar_zen_dark
+    __include: "theme.custom:/style"
 
   translator/+:
     packs:
