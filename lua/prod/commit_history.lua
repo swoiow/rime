@@ -24,7 +24,7 @@ function M.init(env)
   env.size = 9;
   env.input = 'z';
   env.quality = 1000;
-  env.history_translatior = Component.Translator(env.engine,"translator", "history_translator")
+  env.history_translatior = Component.Translator(env.engine, "translator", "history_translator")
 end
 
 function M.fini(env)

@@ -29,7 +29,7 @@ local function cloud_filter(input, env)
 
   -- 发起 HTTP 请求
   local ok, reply = pcall(function()
-    local url = "http://127.0.0.1:18000/predict?text=" .. full_text
+    local url = "http://127.0.0.1:18000/predict?text=" .. full_text .. "&topk=6"
     return http.request(url)
   end)
 

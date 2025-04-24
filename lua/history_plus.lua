@@ -41,6 +41,6 @@ local function history_filter(input, env)
 end
 
 return {
-  history_processor = history_processor,
-  history_filter = history_filter,
+  processor = history_processor,
+  filter = history_filter,
 }
