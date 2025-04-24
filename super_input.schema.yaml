@@ -13,28 +13,25 @@ schema:
   dependencies:
     - luna_pinyin
 
-patch:
-  __include: grammar:/hant
-
 switches:
+  - name: simplification
+    states: [ 漢字, 汉字 ]
   - name: ascii_mode
     reset: 0
     states: [ 中文, 西文 ]
   - name: full_shape
     states: [ 半角, 全角 ]
-  - name: simplification
-    states: [ 漢字, 汉字 ]
   - name: ascii_punct
     states: [ 。，, ．， ]
 
 engine:
   filters:
-    - lua_filter@*history_plus*history_filter
+    - lua_filter@*history_plus*filter
     - lua_filter@*cloud_predictor*filter
     - simplifier
     - uniquifier
   processors:
-    - lua_processor@*history_plus*history_processor
+    - lua_processor@*history_plus*processor
     - lua_processor@*cloud_predictor*processor
     - ascii_composer
     - recognizer

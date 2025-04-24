@@ -1,0 +1,3 @@
+patch:
+  __include:
+    - grammar:/hant
