@@ -25,14 +25,8 @@ switches:
     states: [ 。，, ．， ]
 
 engine:
-  filters:
-    - lua_filter@*history_plus*filter
-    - lua_filter@*cloud_predictor*filter
-    - simplifier
-    - uniquifier
   processors:
     - lua_processor@*history_plus*processor
-    - lua_processor@*cloud_predictor*processor
     - ascii_composer
     - recognizer
     - key_binder
@@ -51,50 +45,47 @@ engine:
     - lua_translator@*translators*date_time_translator
     - lua_translator@*autocomplete
     - punct_translator
-    - script_translator
+    - table_translator@custom_phrase
     - reverse_lookup_translator
+    - script_translator
+  filters:
+    - lua_filter@*history_plus*filter
+    - lua_filter@*cloud_input*filter
+    - simplifier
+    - uniquifier
+
+  preedit_format:
+    __include: luna_pinyin/engine/preedit_format?
+
+speller:
+  algebra:
+    - "erase/^hm$/"
+    - "erase/^m$/"
+    - "erase/^n$/"
+    - "erase/^ng$/"
+    - "abbrev/^([a-z]).+$/$1/"
+    - "abbrev/^([zcs]h).+$/$1/"
+    - "derive/^([nl])ue$/$1ve/"
+    - "derive/^([jqxy])u/$1v/"
+    - "derive/un$/uen/"
+    - "derive/ui$/uei/"
+    - "derive/iu$/iou/"
+    - "derive/([aeiou])ng$/$1gn/"
+    - "derive/([dtngkhrzcs])o(u|ng)$/$1o/"
+    - "derive/ong$/on/"
+    - "derive/ao$/oa/"
+    - "derive/([iu])a(o|ng?)$/a$1$2/"
+  alphabet: zyxwvutsrqponmlkjihgfedcba
+  delimiter: " '"
+
+translator:
+  contextual_suggestions: true
+  dictionary: rime_plus
+  enable_user_dict: true
   preedit_format:
     - "xform/([nl])v/$1ü/"
     - "xform/([nl])ue/$1üe/"
     - "xform/([jqxy])v/$1u/"
-
-speller:
-  alphabet: zyxwvutsrqponmlkjihgfedcba
-  delimiter: " '"
-  algebra:
-    - erase/^hm$/
-    - erase/^m$/
-    - erase/^n$/
-    - erase/^ng$/
-    - abbrev/^([a-z]).+$/$1/
-    - abbrev/^([zcs]h).+$/$1/
-    - derive/^([nl])ue$/$1ve/
-    - derive/^([jqxy])u/$1v/
-    - derive/un$/uen/
-    - derive/ui$/uei/
-    - derive/iu$/iou/
-    - derive/([aeiou])ng$/$1gn/
-    - derive/([dtngkhrzcs])o(u|ng)$/$1o/
-    - derive/ong$/on/
-    - derive/ao$/oa/
-    - derive/([iu])a(o|ng?)$/a$1$2/
-
-translator:
-  dictionary: rime_plus
-  enable_user_dict: true
-  preedit_format:
-    - xform/([nl])v/$1ü/
-    - xform/([nl])ue/$1üe/
-    - xform/([jqxy])v/$1u/
-
-#reverse_lookup:
-#  dictionary: stroke
-#  enable_completion: true
-#  prefix: "`"
-#  suffix: "'"
-#  tips: 〔笔画〕
-#  preedit_format:
-#    - xlit/hspnz/一丨丿丶乙/
 
 punctuator:
   import_preset: symbols
@@ -107,8 +98,9 @@ key_binder:
 recognizer:
   import_preset: default
   patterns:
-    # hack: to enable "/fh" style symbols, '/' must be mapped to a [list].
-    # so those who have customized '/' for direct commit won't be affected by
-    # this change.
-    punct: "^/([0-9]+[a-z]*|[a-z]+)$"
+    code_placeholder: "^(`){3}$"
+    email: "^[A-Za-z][-_.0-9A-Za-z]*@.*$"
+    punct: "^/([0-9]0?|[A-Za-z]+)$"
     reverse_lookup: "`[a-z]*'?$"
+    uppercase: "[A-Z][-_+.'0-9A-Za-z]*$"
+    url: "^(www[.]|https?:|ftp[.:]|mailto:|file:).*$|^[a-z]+[.].+$"
